@@ -7,10 +7,10 @@
 
 // Event handling, user interaction is what starts the code execution.
 
-const taskInput = document.getElementById('new-task'); //Add a new task.
-const addButton = document.getElementsByTagName('button')[0]; //first button
-const incompleteTaskHolder = document.getElementById('incompleteTasks'); //ul of #incompleteTasks
-const completedTasksHolder = document.getElementById('completed-tasks'); //completed-tasks
+const taskInput = document.getElementById('new-task');
+const addTaskButton = document.getElementsByTagName('button')[0];
+const incompleteTaskHolder = document.getElementById('incompleteTasks');
+const completedTasksHolder = document.getElementById('completed-tasks');
 
 const createNewTaskElement = function (taskString) {
   const listItem = document.createElement('li');
@@ -63,9 +63,9 @@ const editTask = function () {
   const editInput = listItem.querySelector('input[type=text]');
   const label = listItem.querySelector('label');
   const editBtn = listItem.querySelector('.edit');
-  const containsClass = listItem.classList.contains('editMode');
+  const isEditMode = listItem.classList.contains('editMode');
   //If class of the parent is .editmode
-  if (containsClass) {
+  if (isEditMode) {
     //switch to .editmode
     //label becomes the inputs value.
     label.innerText = editInput.value;
@@ -107,7 +107,7 @@ const taskIncomplete = function () {
 //The glue to hold it all together.
 
 //Set the click handler to the addTask function.
-addButton.addEventListener('click', addTask);
+addTaskButton.addEventListener('click', addTask);
 
 const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   //select ListItems children
